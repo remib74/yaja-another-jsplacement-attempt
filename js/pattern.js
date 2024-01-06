@@ -59,8 +59,8 @@ let randomPattern = function(imgWidth, imgHeight, areaWidth, areaHeight,xsized,c
   imgWidth = imgWidth || imagesLoaded[0].width*xsize;
   imgHeight = imgHeight || imagesLoaded[0].height*xsize;
   // restrict the randmoness size by using an areaWidth/Height
-  areaWidth = 512;
-  areaHeight = 512;
+  areaWidth = areaWidth || canvas.width;
+  areaHeight = areaHeight || canvas.height;
 
   // create a buffer canvas
   let patternCanvas = canvas.cloneNode(true);
