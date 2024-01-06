@@ -10,8 +10,8 @@
   
 <form>
 <label for="xsize">Pattern size</label>
-  <select id="xsize" onchange="randomPattern(512,512,512,512,this)"> <option value="2">1</option>
-    <option value="3">3</option>
+  <select id="xsize"> <option value="2">1</option>
+    <option value="3" selected>3</option>
     <option value="4">4</option>
     <option value="5">5</option>
     <option value="6">6</option>
@@ -21,17 +21,17 @@
     <option value="10">10</option>
   </select>
   <label for="canvaSize">image size</label>
-  <select id="canvaSize" onchange="randomPattern(this,this,512,512)"> <option value="128">128x128</option>
+  <select id="canvaSize"> <option value="128">128x128</option>
     <option value="256">256x256</option>
     <option value="512">512x512</option>
-    <option value="1024">1024x1024</option>
+    <option value="1024" >1024x1024</option>
     <option value="2048">2048x2048</option>
     <option value="4096">4096x4096</option>
   </select>
   <label for="colorChoice">color choice</label>
-  <select id="colorChoice" onchange="loadImages(this)"> <option value="img">grey</option>
+  <select id="colorChoice"> <option value="img">grey</option>
     <option value="img/blue">blue</option>
-    <option value="img/bluegrey">bluegrey</option>
+    <option value="img/bluegrey"selected>bluegrey</option>
     <option value="img/green">green</option>
     <option value="img/greengrey">greengrey</option>
     <option value="img/redgrey">redgrey</option>
@@ -42,7 +42,7 @@
 
     
   </select>
-  <input type="button" value="submit" onclick="location.reload();">
+  <input type="button" id="subPass"value="submit">
   <label for="colortogrey">color to grey</label>
   <input type="button" id="colortogrey" value="grey image" onclick="grey();">
   <input type="button" value="save png" onclick="savePng();">
@@ -56,7 +56,10 @@
   <bump-map-converter></bump-map-converter>
   <script src="js/math-helper.js"></script>
   <script src="js/pattern.js"></script>
-
+  <!--<script src="js/vector.js"></script>
+  <script src="js/math-helper.js"></script>
+  <script src="js/image-helper.js"></script>-->
+  <!--<script src="bump-map-converter.js" type="module"></script>-->
   <script>
     
     function savePng(){
