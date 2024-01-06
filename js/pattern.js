@@ -2,32 +2,42 @@
 
 let canvas = document.getElementById('canvas1');
 let canvas2 = document.getElementById('canvas2');
-var colorc=document.getElementById('colorChoice').value
+
+var itemList = document.getElementById("canvaSize");
+let subPass = document.getElementById("subPass");
+
 function grey(){
   
  
-    // select canvas elements
-    var destCanvas = document.getElementById("canvas2");
-    destCanvas.width=document.getElementById('canvaSize').value;
-    destCanvas.height=document.getElementById('canvaSize').value;
-    //copy canvas by DataUrl
-    var sourceImageData = canvas.toDataURL("image/png");
-    var destCanvasContext = destCanvas.getContext('2d');
+  // select canvas elements
+  var destCanvas = document.getElementById("canvas2");
+  destCanvas.width=document.getElementById('canvaSize').value;
+  destCanvas.height=document.getElementById('canvaSize').value;
+  //copy canvas by DataUrl
+  var sourceImageData = canvas.toDataURL("image/png");
+  var destCanvasContext = destCanvas.getContext('2d');
 
-    var destinationImage = new Image;
-    destinationImage.onload = function(){
-      destCanvasContext.filter = 'grayscale(1)';
-      destCanvasContext.drawImage(destinationImage,0,0);
-    };
-    destinationImage.src = sourceImageData;
+  var destinationImage = new Image;
+  destinationImage.onload = function(){
+    destCanvasContext.filter = 'grayscale(1)';
+    destCanvasContext.drawImage(destinationImage,0,0);
+  };
+  destinationImage.src = sourceImageData;
 }
+
+subPass.addEventListener(
+  "click",
+  () => {
+ 
+
+    var colorc=document.getElementById('colorChoice').value
+
 
 let degrees=45;
 
 //canvas.width = window.innerWidth>800? window.innerWidth: 800;
 //canvas.height = window.innerHeight>800? window.innerHeight: 800;
-canvas.width = document.getElementById('canvaSize').value;
-canvas.height = document.getElementById('canvaSize').value;
+
 
 let ctx = canvas.getContext('2d');
 let ctx2 = canvas.getContext('2d');
@@ -37,6 +47,10 @@ let imagesLoaded = [];
 
 let randomPattern = function(imgWidth, imgHeight, areaWidth, areaHeight,xsized,colorc) {
   
+  canvas.width = document.getElementById('canvaSize').value;
+  canvas.height = document.getElementById('canvaSize').value;
+  
+  let collection = itemList.selectedOptions;
   // either set a defined width/height for our images, or use the first one's
   xsized=document.getElementById('xsize').value
   
@@ -45,8 +59,8 @@ let randomPattern = function(imgWidth, imgHeight, areaWidth, areaHeight,xsized,c
   imgWidth = imgWidth || imagesLoaded[0].width*xsize;
   imgHeight = imgHeight || imagesLoaded[0].height*xsize;
   // restrict the randmoness size by using an areaWidth/Height
-  areaWidth = areaWidth || canvas.width;
-  areaHeight = areaHeight || canvas.height;
+  areaWidth = 512;
+  areaHeight = 512;
 
   // create a buffer canvas
   let patternCanvas = canvas.cloneNode(true);
@@ -116,7 +130,7 @@ for (let i = 0; i < 10; i++) {
     color2=Math.floor(Math.random()*255);
     ctx.fillStyle = patt;
     ctx.beginPath();
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillRect(0, 0, 4098, 4098);
 
   }
   
@@ -124,7 +138,10 @@ for (let i = 0; i < 10; i++) {
 }
 
 };
-
-
 loadImages(colorc);
+});
+
+
+
+
 
