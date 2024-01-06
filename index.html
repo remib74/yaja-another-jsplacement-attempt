@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Yet Another Jsplacement attempt</title>
+  <link rel="stylesheet" href="css/style.css">
+  
+</head>
+<body>
+  
+<form>
+<label for="xsize">Pattern size</label>
+  <select id="xsize" onchange="randomPattern(512,512,512,512,this)"> <option value="2">1</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+  </select>
+  <label for="canvaSize">image size</label>
+  <select id="canvaSize" onchange="randomPattern(this,this,512,512)"> <option value="128">128x128</option>
+    <option value="256">256x256</option>
+    <option value="512">512x512</option>
+    <option value="1024">1024x1024</option>
+    <option value="2048">2048x2048</option>
+    <option value="4096">4096x4096</option>
+  </select>
+  <label for="colorChoice">color choice</label>
+  <select id="colorChoice" onchange="loadImages(this)"> <option value="img">grey</option>
+    <option value="img/blue">blue</option>
+    <option value="img/bluegrey">bluegrey</option>
+    <option value="img/green">green</option>
+    <option value="img/greengrey">greengrey</option>
+    <option value="img/redgrey">redgrey</option>
+    <option value="img/rose">rose</option>
+    <option value="img/rosegrey">rosegrey</option>
+    <option value="img/yellow">yellow</option>
+    <option value="img/yellowgrey">yellowgrey</option>
+
+    
+  </select>
+  <input type="button" value="submit" onclick="location.reload();">
+  <label for="colortogrey">color to grey</label>
+  <input type="button" id="colortogrey" value="grey image" onclick="grey();">
+  <input type="button" value="save png" onclick="savePng();">
+  <input type="button" value="save png grey" onclick="savePngGrey();">
+	
+</form>
+
+
+  <canvas id="canvas1"></canvas>
+  <canvas id="canvas2"></canvas>
+  <bump-map-converter></bump-map-converter>
+  <script src="js/math-helper.js"></script>
+  <script src="js/pattern.js"></script>
+
+  <script>
+    
+    function savePng(){
+   
+  var link = document.createElement("a");
+  link.download = "image.png";
+
+  
+    let downloadLink = document.createElement('a');
+    downloadLink.setAttribute('download', 'CanvasAsImage.png');
+    let canvas = document.getElementById('canvas1');
+    canvas.toBlob(function(blob) {
+      let url = URL.createObjectURL(blob);
+      downloadLink.setAttribute('href', url);
+      downloadLink.click();
+    
+});
+  }
+  function savePngGrey(){
+   
+    var link = document.createElement("a");
+    link.download = "image.png";
+  
+    
+      let downloadLink = document.createElement('a');
+      downloadLink.setAttribute('download', 'CanvasAsGrey.png');
+      let canvas = document.getElementById('canvas2');
+      canvas.toBlob(function(blob) {
+        let url = URL.createObjectURL(blob);
+        downloadLink.setAttribute('href', url);
+        downloadLink.click();
+      
+  });
+    }
+  </script>
+</body>
+</html>
